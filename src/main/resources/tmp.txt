@@ -1,0 +1,85 @@
+create table pokemon.history
+(
+    history_id  int auto_increment comment '主键'
+        primary key,
+    update_date timestamp default CURRENT_TIMESTAMP not null comment '生成日期',
+    type        varchar(100)                        not null comment '接口类型',
+    content     longtext                            null comment '接口内容'
+)
+    comment 'PokeApi调用记录';
+
+create table pokemon.species
+(
+    species_id             int auto_increment comment '主键'
+        primary key,
+    update_date            timestamp     null comment '更新日期',
+    name                   varchar(100)  null comment '名称',
+    `order`                int           null comment '序号',
+    gender_rate            int           null comment '雌性比例',
+    capture_rate           int           null comment '基本捕获率',
+    base_happiness         int           null comment '基本好感度',
+    hatch_counter          int           null comment '基础孵化数',
+    is_baby                tinyint(1)    null comment '是否宝宝宝可梦',
+    is_legendary           tinyint(1)    null comment '是否传说宝可梦',
+    is_mythical            tinyint(1)    null comment '是否神话宝可梦',
+    has_gender_differences tinyint(1)    null comment '是否有性别差异',
+    forms_switchable       tinyint(1)    null comment '是否切换多形态',
+    growth_rate            varchar(100)  null comment '成长速率',
+    egg_group1             varchar(100)  null comment '蛋组1',
+    egg_group2             varchar(100)  null comment '蛋组2',
+    color                  varchar(100)  null comment '颜色',
+    shape                  varchar(100)  null comment '形状',
+    habitat                varchar(100)  null comment '栖息地',
+    generation             varchar(100)  null comment '世代',
+    evolves_from_species   varchar(100)  null comment '进化前',
+    names                  varchar(100)  null comment '名称',
+    genera                 varchar(100)  null comment '分类',
+    varieties              varchar(3000) null comment '形态',
+    pokedex_numbers        varchar(3000) null comment '图鉴序号',
+    flavor_text_entries    varchar(3000) null comment '图鉴描述',
+    evolution_chain_id     int           null comment '进化链ID'
+)
+    comment '图鉴';
+
+-- 物种 species
+-- 宝可梦 pokemon
+-- 性格 characteristics
+-- 蛋组 egg-groups
+-- 性别 gender
+-- 性格 natures
+-- 属性 types
+-- 地方图鉴 pokedex
+
+create table species
+(
+    species_id             int          not null auto_increment comment '主键' primary key,
+    update_date            timestamp    null comment '更新日期',
+    name                   varchar(100) null comment '名称',
+    `order`                int          null comment '序号',
+    gender_rate            int          null comment '雌性比例',
+    capture_rate           int          null comment '基本捕获率',
+    base_happiness         int          null comment '基本好感度',
+    hatch_counter          int          null comment '基础孵化数',
+    is_baby                boolean      null comment '是否宝宝宝可梦',
+    is_legendary           boolean      null comment '是否传说宝可梦',
+    is_mythical            boolean      null comment '是否神话宝可梦',
+    has_gender_differences boolean      null comment '是否有性别差异',
+    forms_switchable       boolean      null comment '是否切换多形态',
+    growth_rate            varchar(100) null comment '成长速率',
+    egg_group1             varchar(100) null comment '蛋组1',
+    egg_group2             varchar(100) null comment '蛋组2',
+    color                  varchar(100) null comment '颜色',
+    shape                  varchar(100) null comment '形状',
+    habitat                varchar(100) null comment '栖息地',
+    generation             varchar(100) null comment '世代',
+    evolves_from_species   varchar(100) null comment '进化前',
+    names                  text         null comment '名称',
+    genera                 text         null comment '分类',
+    varieties              text         null comment '形态',
+    pokedex_numbers        text         null comment '图鉴序号',
+    flavor_text_entries    text         null comment '图鉴描述',
+    form_descriptions      text         null comment '变种描述',
+    evolution_chain        text         null comment '进化链',
+    evolution_chain_url    varchar(100) null comment '进化链-URL'
+)
+    comment '图鉴';
