@@ -1,6 +1,7 @@
 package cn.dystudio.pokemon.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.sql.Timestamp;
 import lombok.Getter;
@@ -37,6 +38,7 @@ public class Species {
     /**
      * 序号
      */
+    @TableField("`order`")
     private Integer order;
 
     /**
