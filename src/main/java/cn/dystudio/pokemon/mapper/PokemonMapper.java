@@ -1,18 +1,18 @@
 package cn.dystudio.pokemon.mapper;
 
-import cn.dystudio.pokemon.entity.History;
+import cn.dystudio.pokemon.entity.Pokemon;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
- * PokeApi调用记录 Mapper 接口
+ * 宝可梦 Mapper 接口
  * </p>
  *
  * @author 张永清
- * @since 2023-03-02
+ * @since 2023-03-05
  */
 @Mapper
-public interface HistoryMapper extends BaseMapper<History> {
+public interface PokemonMapper extends BaseMapper<Pokemon> {
 
 }

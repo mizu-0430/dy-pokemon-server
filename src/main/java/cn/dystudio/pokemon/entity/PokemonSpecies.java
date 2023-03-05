@@ -1,6 +1,5 @@
 package cn.dystudio.pokemon.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.sql.Timestamp;
@@ -9,7 +8,7 @@ import lombok.Setter;
 
 /**
  * <p>
- * 图鉴
+ * 宝可梦种族
  * </p>
  *
  * @author 张永清
@@ -17,12 +16,12 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Species {
+public class PokemonSpecies {
 
     /**
      * 主键
      */
-    @TableId(value = "species_id", type = IdType.AUTO)
+    @TableId
     private Integer speciesId;
 
     /**

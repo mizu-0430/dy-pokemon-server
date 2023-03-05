@@ -75,13 +75,10 @@ public class CodeGenerator {
                 .entityBuilder()
                 .enableLombok()
                 .disableSerialVersionUID()
-                .enableFileOverride()
                 .serviceBuilder()
                 .formatServiceFileName("%sService")
-                .enableFileOverride()
                 .mapperBuilder()
                 .mapperAnnotation(org.apache.ibatis.annotations.Mapper.class)
-                .enableFileOverride()
                 .build();
 
         AutoGenerator autoGenerator = new AutoGenerator(dataSourceConfig);
