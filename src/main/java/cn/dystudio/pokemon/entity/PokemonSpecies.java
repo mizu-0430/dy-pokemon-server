@@ -128,7 +128,7 @@ public class PokemonSpecies {
     /**
      * 名称
      */
-    private String names;
+    private String description;
 
     /**
      * 分类

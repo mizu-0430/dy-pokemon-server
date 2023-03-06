@@ -45,7 +45,7 @@ public class PokemonServiceImpl extends ServiceImpl<PokemonMapper, Pokemon> impl
         SyncController.isSync = true;
         SyncController.totalSize = 0;
         SyncController.syncSize = 0;
-        SyncController.syncModule = "pokemon-pokemon";
+        SyncController.syncModule = "pokemon";
         try {
             logger.info("==================================================> pokemon");
             RestTemplate template = new RestTemplate();

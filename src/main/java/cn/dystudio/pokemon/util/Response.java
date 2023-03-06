@@ -1,6 +1,7 @@
 package cn.dystudio.pokemon.util;
 
 import cn.dystudio.pokemon.controller.SyncController;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -20,7 +21,7 @@ public class Response {
         return success(tips, null);
     }
 
-    public static String success(String tips, ObjectNode data) {
+    public static String success(String tips, JsonNode data) {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode node = objectMapper.createObjectNode();
         node.put("code", "200");
@@ -28,7 +29,7 @@ public class Response {
             node.put("tips", tips);
         }
         if (data != null) {
-            node.put("data", data.toString());
+            node.replace("data", data);
         }
         return node.toString();
     }
@@ -41,7 +42,7 @@ public class Response {
         return fail(tips, null);
     }
 
-    public static String fail(String tips, ObjectNode data) {
+    public static String fail(String tips, JsonNode data) {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode node = objectMapper.createObjectNode();
         node.put("code", "400");
@@ -49,7 +50,7 @@ public class Response {
             node.put("tips", tips);
         }
         if (data != null) {
-            node.put("data", data.toString());
+            node.replace("data", data);
         }
         return node.toString();
     }

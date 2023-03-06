@@ -122,7 +122,7 @@ public class PokemonSpeciesServiceImpl extends ServiceImpl<PokemonSpeciesMapper,
                         }
                         if (namesEn != null) names = namesEn;
                         if (namesZh != null) names = namesZh;
-                        entity.setNames(names);
+                        entity.setDescription(names);
                     } catch (Exception ignored) {
                     }
                 }
