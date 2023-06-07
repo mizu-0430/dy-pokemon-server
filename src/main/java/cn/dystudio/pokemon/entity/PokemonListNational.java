@@ -26,11 +26,6 @@ public class PokemonListNational {
     private Integer speciesId;
 
     /**
-     * 更新日期
-     */
-    private Timestamp updateDate;
-
-    /**
      * 名称
      */
     private String name;

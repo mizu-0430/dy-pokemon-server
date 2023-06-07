@@ -37,8 +37,30 @@ public class PokemonServiceImpl extends ServiceImpl<PokemonMapper, Pokemon> impl
     @Value("${pokeApi.path}")
     private String apiUrl;
 
-    @Value("${pokeApi.pokemon.sprite.url.prefix}")
-    private String spriteUrlPrefix;
+    @Value("${pokeApi.url.prefix.pokemon.sprite.fd1}")
+    private String urlPrefixSpriteFd1;
+    @Value("${pokeApi.url.prefix.pokemon.sprite.fd2}")
+    private String urlPrefixSpriteFd2;
+    @Value("${pokeApi.url.prefix.pokemon.sprite.ff1}")
+    private String urlPrefixSpriteFf1;
+    @Value("${pokeApi.url.prefix.pokemon.sprite.ff2}")
+    private String urlPrefixSpriteFf2;
+    @Value("${pokeApi.url.prefix.pokemon.sprite.bd1}")
+    private String urlPrefixSpriteBd1;
+    @Value("${pokeApi.url.prefix.pokemon.sprite.bd2}")
+    private String urlPrefixSpriteBd2;
+    @Value("${pokeApi.url.prefix.pokemon.sprite.bf1}")
+    private String urlPrefixSpriteBf1;
+    @Value("${pokeApi.url.prefix.pokemon.sprite.bf2}")
+    private String urlPrefixSpriteBf2;
+    @Value("${pokeApi.url.prefix.pokemon.icon.d1}")
+    private String urlPrefixIconD1;
+    @Value("${pokeApi.url.prefix.pokemon.icon.f1}")
+    private String urlPrefixIconD2;
+    @Value("${pokeApi.url.prefix.pokemon.image.d1}")
+    private String urlPrefixImageD1;
+    @Value("${pokeApi.url.prefix.pokemon.image.d2}")
+    private String urlPrefixImageD2;
 
     @Override
     public void sync() {
@@ -165,23 +187,22 @@ public class PokemonServiceImpl extends ServiceImpl<PokemonMapper, Pokemon> impl
                 }
                 if (!jn.get("sprites").isNull()) {
                     JsonNode sprites = jn.get("sprites");
-                    int length = spriteUrlPrefix.length();
                     if (!sprites.get("front_default").isNull())
-                        entity.setSpriteFrontDefault(sprites.get("front_default").asText().substring(length));
+                        entity.setSpriteFrontDefault(sprites.get("front_default").asText().substring(urlPrefixSpriteFd1.length()));
                     if (!sprites.get("front_female").isNull())
-                        entity.setSpriteFrontFemale(sprites.get("front_female").asText().substring(length));
+                        entity.setSpriteFrontFemale(sprites.get("front_female").asText().substring(urlPrefixSpriteFf1.length()));
                     if (!sprites.get("front_shiny").isNull())
-                        entity.setSpriteFrontDefault2(sprites.get("front_shiny").asText().substring(length));
+                        entity.setSpriteFrontDefault2(sprites.get("front_shiny").asText().substring(urlPrefixSpriteFd2.length()));
                     if (!sprites.get("front_shiny_female").isNull())
-                        entity.setSpriteFrontFemale2(sprites.get("front_shiny_female").asText().substring(length));
+                        entity.setSpriteFrontFemale2(sprites.get("front_shiny_female").asText().substring(urlPrefixSpriteFf2.length()));
                     if (!sprites.get("back_default").isNull())
-                        entity.setSpriteBackDefault(sprites.get("back_default").asText().substring(length));
+                        entity.setSpriteBackDefault(sprites.get("back_default").asText().substring(urlPrefixSpriteBd1.length()));
                     if (!sprites.get("back_female").isNull())
-                        entity.setSpriteBackFemale(sprites.get("back_female").asText().substring(length));
+                        entity.setSpriteBackFemale(sprites.get("back_female").asText().substring(urlPrefixSpriteBf1.length()));
                     if (!sprites.get("back_shiny").isNull())
-                        entity.setSpriteBackDefault2(sprites.get("back_shiny").asText().substring(length));
+                        entity.setSpriteBackDefault2(sprites.get("back_shiny").asText().substring(urlPrefixSpriteBd2.length()));
                     if (!sprites.get("back_shiny_female").isNull())
-                        entity.setSpriteBackFemale2(sprites.get("back_shiny_female").asText().substring(length));
+                        entity.setSpriteBackFemale2(sprites.get("back_shiny_female").asText().substring(urlPrefixSpriteBf2.length()));
                     if (!sprites.get("versions").isNull()) {
                         Iterator<String> iterator = sprites.get("versions").fieldNames();
                         while (iterator.hasNext()) {
@@ -189,12 +210,21 @@ public class PokemonServiceImpl extends ServiceImpl<PokemonMapper, Pokemon> impl
                             if (generation.has("icons")) {
                                 JsonNode icons = generation.get("icons");
                                 if (icons.has("front_default") && !icons.get("front_default").isNull()) {
-                                    entity.setIconFrontDefault(icons.get("front_default").asText().substring(length));
+                                    entity.setIconFrontDefault(icons.get("front_default").asText().substring(urlPrefixIconD1.length()));
                                 }
                                 if (icons.has("front_female") && !icons.get("front_female").isNull()) {
-                                    entity.setIconFrontFemale(icons.get("front_female").asText().substring(length));
+                                    entity.setIconFrontFemale(icons.get("front_female").asText().substring(urlPrefixIconD2.length()));
                                 }
                             }
+                        }
+                    }
+                    if (!sprites.get("other").isNull() && !sprites.get("other").get("official-artwork").isNull()) {
+                        JsonNode artworks = sprites.get("other").get("official-artwork");
+                        if (artworks.has("front_default") && !artworks.get("front_default").isNull()) {
+                            entity.setImageDefault(artworks.get("front_default").asText().substring(urlPrefixImageD1.length()));
+                        }
+                        if (artworks.has("front_shiny") && !artworks.get("front_shiny").isNull()) {
+                            entity.setImageDefault2(artworks.get("front_shiny").asText().substring(urlPrefixImageD2.length()));
                         }
                     }
                 }

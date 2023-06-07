@@ -177,6 +177,16 @@ public class Pokemon {
     private String spriteBackFemale2;
 
     /**
+     * 绘图
+     */
+    private String imageDefault;
+
+    /**
+     * 闪光绘图
+     */
+    private String imageDefault2;
+
+    /**
      * 所有形态
      */
     private String forms;
